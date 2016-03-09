@@ -1,7 +1,7 @@
 build:
 	npm install
 	typings install
-	tsc --outDir js
+	tsc -p tsconfig.json --outDir js
 
 clean:
 	rm -rf node_modules
