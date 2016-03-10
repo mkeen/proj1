@@ -1,3 +1,6 @@
-RewriteEngine on
-RewriteCond %{REQUEST_URI} !^/base.html$
-RewriteRule . base.html [R=302,L]
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

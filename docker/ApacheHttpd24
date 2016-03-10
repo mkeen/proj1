@@ -36,6 +36,7 @@ WORKDIR httpd-2.4.18
 RUN ./configure --with-mpm=event --enable-so --enable-ssl --prefix=$HTTPD_PREFIX
 RUN make -j"$(nproc)"
 RUN make install
+RUN ls
 RUN cat /usr/local/apache2/conf/httpd.conf
 COPY ./docker/httpd.conf /usr/local/apache2/conf
 COPY ./docker/httpd-foreground /usr/local/bin/
