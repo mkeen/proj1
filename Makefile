@@ -1,6 +1,9 @@
 default:
 	make -C app
-	sudo docker build -f docker/ApacheHttpd24 -t proj1 .
+	make -C docker
 
-run:
-	sudo docker run proj1
+run: default
+	make run -C docker
+
+clean:
+	make clean -C app

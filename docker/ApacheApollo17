@@ -1,0 +1,31 @@
+FROM debian:jessie
+RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+RUN echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends
+
+RUN buildDeps=' \
+      ca-certificates \
+      libpcre++-dev \
+      libssl-dev \
+    ' \
+    set -x \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends $buildDeps
+
+RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
+RUN apt-get -y install wget oracle-java8-installer
+RUN wget --progress=bar:force http://www-eu.apache.org/dist/activemq/activemq-apollo/1.7.1/apache-apollo-1.7.1-unix-distro.tar.gz
+RUN tar -xzf apache-apollo-1.7.1-unix-distro.tar.gz
+WORKDIR apache-apollo-1.7.1/bin
+RUN ./apollo create /apollo-broker
+WORKDIR /apollo-broker/bin
+EXPOSE 61681
+EXPOSE 61680
+EXPOSE 61623
+EXPOSE 61624
+COPY ./docker/apollo.xml /apollo-broker/etc/apollo.xml
+CMD ["/apollo-broker/bin/apollo-broker", "run"]
