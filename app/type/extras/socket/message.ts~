@@ -1,0 +1,8 @@
+export class Message {
+  body: string;
+
+  json(): any {
+    return Json.parse(<string>this.body);
+  }
+  
+}

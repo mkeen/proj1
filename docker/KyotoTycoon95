@@ -1,7 +1,6 @@
 FROM debian:jessie
 RUN apt-get update \
     && apt-get install -y --no-install-recommends
-
 RUN buildDeps=' \
       ca-certificates \
       libpcre++-dev \
@@ -9,8 +8,7 @@ RUN buildDeps=' \
     ' \
     set -x \
     && apt-get update \
-    && apt-get install -y --no-install-recommends $buildDeps				  
-
+    && apt-get install -y --no-install-recommends $buildDeps
 RUN apt-get -y install wget gcc make autoconf g++ sed coreutils kyototycoon
 EXPOSE 80
 CMD ["ktserver", "-port", "80"]

@@ -1,7 +1,16 @@
-import {Component} from 'angular2/core';
+import {Component, View} from 'angular2/core';
 
 @Component({
-    selector: 'dashboard', 
+    selector: 'dashboard' 
+})
+@View({
     templateUrl: '/templates/dashboard.html'
 })
-export class Dashboard { }
+export class Dashboard {
+    videosrc: string;
+    constructor() {
+	eval('FSGetCam();');
+    }
+    
+}
+

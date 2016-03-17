@@ -1,0 +1,22 @@
+@import "bootstrap";
+
+body {
+    video {
+	display: none;
+    }
+    
+    .facemask {
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 120px;
+	margin: 0 auto;
+	position: relative;
+	
+	canvas {
+	    position: relative;
+	    left: -20px;
+	}
+	
+    }
+}
