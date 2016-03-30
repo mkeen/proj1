@@ -3,6 +3,7 @@ default:
 	sudo docker build -f KyotoTycoon95 -t proj1-kyoto ../
 
 build-httpd:
+	make -C ../app
 	sudo docker build -f ApacheHttpd24 -t proj1-httpd ../
 
 build-apollo:

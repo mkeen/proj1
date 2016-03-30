@@ -1,4 +1,1 @@
 ./app/node_modules
-./app/app/node_modules/**/*.css
-./app/app/node_modules/**/*.js.map
-./app/app/node_modules/**/*.ts

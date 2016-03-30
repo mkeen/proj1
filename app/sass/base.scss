@@ -1,22 +1,84 @@
 @import "bootstrap";
 
+@mixin no-sel {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+}
+
 body {
-    video {
-	display: none;
+    
+}
+
+$redorange: #f13c24;
+
+.row {
+    &.main {
+	min-height: 64px;
     }
     
-    .facemask {
-	width: 120px;
-	height: 120px;
-	overflow: hidden;
-	border-radius: 120px;
-	margin: 0 auto;
-	position: relative;
+}
+
+a#logohit {
+    display: block;
+    height: 100px;
+    width: 112px;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    z-index: 1;
+}
+
+#logotype {
+    @include no-sel;
+    
+    color: $redorange;
+    font-family: instawire;
+    font-size: 6em;
+    line-height: .46em;
+}
+
+#logohead {
+    @include no-sel;
+    
+    margin-bottom: 100px;
+    
+    h1 {
+	font-family: texta;
+	color: rgba(0,0,0,.3);
+	font-size: 1.4em;
+	margin-top: -10px;
+	padding: 0;
+    }
+
+}
+
+#login {
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    display: block;
+    text-align: center;
+    font-size: .8em;
+    text-transform: uppercase;
+    padding: 5px 0 5px 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+header {
+    nav {
+	position: absolute;
+	right: 20px;
 	
-	canvas {
-	    position: relative;
-	    left: -20px;
+	a {
+	    padding: 20px 15px 20px 15px;
+
+	    &:last-child {
+		padding-right: 0;
+	    }
 	}
 	
     }
+    
 }

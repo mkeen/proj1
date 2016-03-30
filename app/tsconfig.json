@@ -1,18 +1,31 @@
 {
-  "compilerOptions": {
-	  "target": "es5",
-	  "module": "system",
-	  "moduleResolution": "node",
-	  "sourceMap": false,
-	  "emitDecoratorMetadata": true,
-	  "experimentalDecorators": true,
-	  "removeComments": false,
-	  "noImplicitAny": false
-  },
-  
-  "exclude": [
-	  "node_modules",
-	  "typings"
-  ]
+    "compilerOptions": {
+	"target": "es5",
+	"module": "commonjs",
+	"moduleResolution": "node",
+	"sourceMap": false,
+	"emitDecoratorMetadata": true,
+	"experimentalDecorators": true,
+	"removeComments": false,
+	"noImplicitAny": false
+    },
+
+    "exclude": [
+	"node_modules",
+	"server.ts",
+	"browser.d.ts",
+	"es6-collections.d.ts",
+	"es6-shim.d.ts",
+	"es6-promise.d.ts"
+    ],
+
+    "files": [
+	"typings/main.d.ts",
+	"type/boot.ts",
+	"type/components/application.ts",
+	"type/components/marketing.ts",
+	"type/components/dashboard.ts",
+	"type/components/login.ts"
+    ]
   
 }

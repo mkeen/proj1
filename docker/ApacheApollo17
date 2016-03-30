@@ -21,11 +21,13 @@ RUN apt-get -y install wget oracle-java8-installer
 RUN wget --progress=bar:force http://www-eu.apache.org/dist/activemq/activemq-apollo/1.7.1/apache-apollo-1.7.1-unix-distro.tar.gz
 RUN tar -xzf apache-apollo-1.7.1-unix-distro.tar.gz
 WORKDIR apache-apollo-1.7.1/bin
-RUN ./apollo create /apollo-broker
-WORKDIR /apollo-broker/bin
+RUN ./apollo create /wire.instawire.xyz --with-ssl --home ../ 
+WORKDIR /wire.instawire.xyz
 EXPOSE 61681
 EXPOSE 61680
+EXPOSE 61615
 EXPOSE 61623
 EXPOSE 61624
-COPY ./docker/apollo.xml /apollo-broker/etc/apollo.xml
-CMD ["/apollo-broker/bin/apollo-broker", "run"]
+COPY ./docker/certs/apollo/wire_instawire_xyz.jks etc/
+COPY ./docker/apollo.xml etc/apollo.xml
+CMD ["/wire.instawire.xyz/bin/apollo-broker", "run"]
